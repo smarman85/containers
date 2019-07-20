@@ -1,0 +1,100 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set laststatus=2
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" javaScript syntax highlighting
+Plugin 'pangloss/vim-javascript'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+Plugin 'user/L9', {'name': 'newL9'}
+Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" plugins for snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+" colorscheme meta5
+Plugin 'christophermca/meta5'
+Plugin 'terryma/vim-multiple-cursors'
+
+
+" optional
+Plugin 'honza/vim-snippets'
+
+" indentation helper
+" Plugin 'Yggdroot/indentLine'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+syntax on
+"set number
+"set colorscheme to mustang
+colorscheme mustang
+"set colorscheme to onedark
+"colorscheme onedark
+"colorscheme meta5
+set t_Co=256
+set background=dark
+set ts=2 sts=2 noet
+retab!
+
+" set up the tab spacing
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+set backspace=indent,eol,start
+
+set guifont=Inconsolata\ for\ Powerline:h15
+let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
+" set mapleader
+let mapleader = "\<Space>"
+" set copy/paste
+vmap <Leader>y :w !pbcopy<CR>
+nmap <Leader>p :r !pbpaste<CR>
+
+if has("gui_running")
+let s:uname = system("uname")
+if s:uname == "Darwin\n"
+	set guifont=Inconsolata\ for\ Powerline:h15
+	endif
+endif
