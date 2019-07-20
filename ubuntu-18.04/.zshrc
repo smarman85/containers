@@ -39,7 +39,8 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/local/go/bin:$HOME/Library/Python/2.7/bin:/usr/local/go/bin:$(go env GOPATH)/bin"
+#export PATH="/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/usr/local/go/bin:$HOME/Library/Python/2.7/bin:/usr/local/go/bin:$(go env GOPATH)/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/Python/2.7/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 export WORKON_HOME=~/Envs
 
