@@ -16,7 +16,8 @@ RUN apt-get update && \
     LANG=en_US.UTF-8 && \
     adduser --quiet --disabled-password --shell /bin/zsh --home /home/${USERNAME} --gecos "User" ${USERNAME} && \
     wget https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz && \
-    tar -xvf go${GO_VERSION}.linux-amd64.tar.gz && mv go /usr/local
+    tar -xvf go${GO_VERSION}.linux-amd64.tar.gz && mv go /usr/local && \
+    echo "smarman ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 USER ${USERNAME}
 
