@@ -55,6 +55,6 @@ RUN git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim 
     cat /home/${USERNAME}/.zshrc.pre-oh-my-zsh > /home/${USERNAME}/.zshrc && \
     sed -i 's/%~/%2~/g' /home/${USERNAME}/.oh-my-zsh/themes/agnoster.zsh-theme && \
     mkdir -p /home/${USERNAME}/go/bin && mkdir -p /home/${USERNAME}/go/src && \
-    echo "export GOROOT=/usr/local/go\nexport GOPATH=$HOME/go\nexport PATH=\$GOPATH/bin:\$GOROOT/bin:$PATH" >> /home/${USERNAME}/.zshrc
+    echo "export LANG=en_US.UTF-8\nexport GOROOT=/usr/local/go\nexport GOPATH=$HOME/go\nexport PATH=\$GOPATH/bin:\$GOROOT/bin:$PATH" >> /home/${USERNAME}/.zshrc
 
 CMD ["/bin/zsh"]
