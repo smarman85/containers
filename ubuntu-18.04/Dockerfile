@@ -11,7 +11,9 @@ RUN apt-get update && \
       sudo \
       tmux \
       curl \
+      unzip \
       python3.6 \
+      python3-pip \
       python3-venv \
       ca-certificates \
       apt-transport-https \
@@ -23,15 +25,22 @@ RUN apt-get update && \
     adduser --quiet --disabled-password --shell /bin/zsh --home /home/${USERNAME} --gecos "User" ${USERNAME} && \
     wget https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz && \
+    wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip && \
+    unzip terraform_0.11.13_linux_amd64.zip -d /usr/local/bin/ && \
     echo "smarman ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Install Docker
-RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && \
-    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" && \
-    apt-cache policy docker-ce && \
-    apt install -y docker-ce && \
-    usermod -aG docker ${USERNAME} && \
-    service docker start
+#RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && \
+#    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" && \
+#    apt-cache policy docker-ce && \
+#    apt install -y docker-ce && \
+#    usermod -aG docker ${USERNAME} && \
+#    service docker start
+
+# Install devops stuff
+RUN pip3 install awscli && \
+    wget https://releases.hashicorp.com/terraform/0.11.13/
+
 
 USER ${USERNAME}
 
