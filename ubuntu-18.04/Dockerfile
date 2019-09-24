@@ -11,6 +11,7 @@ RUN apt-get update && \
       sudo \
       tmux \
       curl \
+      groff \
       unzip \
       python3.6 \
       python3-pip \
