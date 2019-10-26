@@ -1,6 +1,6 @@
 FROM ubuntu:bionic
 
-ENV GO_VERSION 1.12.7
+ENV GO_VERSION 1.13.1
 ENV USERNAME smarman
 
 RUN apt-get update && \
