@@ -13,6 +13,7 @@ RUN apt-get update && \
       curl \
       groff \
       unzip \
+      neofetch \
       python3.5 \
       #python3.6 \
       python3-pip \
@@ -45,8 +46,8 @@ RUN apt-get update && \
 RUN pip3 install awscli && \
     wget https://releases.hashicorp.com/terraform/0.11.13/ && \
     curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb" && \
-    sudo dpkg -i session-manager-plugin.deb && \
-    sudo start amazon-ssm-agent
+    sudo dpkg -i session-manager-plugin.deb
+    #sudo start amazon-ssm-agent
 
 
 USER ${USERNAME}
