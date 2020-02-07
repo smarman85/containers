@@ -13,6 +13,7 @@ RUN apt-get update && \
       curl \
       groff \
       unzip \
+      neofetch \
       python3.8 \
       python3-pip \
       python3-venv \
@@ -28,6 +29,8 @@ RUN apt-get update && \
     tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz && \
     wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip && \
     unzip terraform_0.11.13_linux_amd64.zip -d /usr/local/bin/ && \
+    #wget https://releases.hashicorp.com/terraform/0.12.16/terraform_0.12.16_linux_amd64.zip && \
+    #unzip terraform_0.12.16_linux_amd64.zip -d /usr/local/bin/ && \
     echo "smarman ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Install Docker
@@ -43,6 +46,7 @@ RUN pip3 install awscli && \
     wget https://releases.hashicorp.com/terraform/0.11.13/ && \
     curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb" && \
     sudo dpkg -i session-manager-plugin.deb
+    #sudo start amazon-ssm-agent
 
 
 USER ${USERNAME}
