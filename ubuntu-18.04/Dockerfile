@@ -13,7 +13,7 @@ RUN apt-get update && \
       curl \
       groff \
       unzip \
-      python3.6 \
+      python3.8 \
       python3-pip \
       python3-venv \
       ca-certificates \
@@ -40,7 +40,9 @@ RUN apt-get update && \
 
 # Install devops stuff
 RUN pip3 install awscli && \
-    wget https://releases.hashicorp.com/terraform/0.11.13/
+    wget https://releases.hashicorp.com/terraform/0.11.13/ && \
+    curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb" && \
+    sudo dpkg -i session-manager-plugin.deb
 
 
 USER ${USERNAME}
