@@ -1,6 +1,10 @@
 FROM ubuntu:bionic
 
 ENV GO_VERSION 1.13.1
+#ENV TF_VERSION 0.12.16
+ENV TF_VERSION 0.11.14
+ENV HELM_VERSION v2.16.0-rc.2
+ENV K8S_VERSION v1.17.0
 ENV USERNAME smarman
 
 RUN apt-get update && \
@@ -30,8 +34,8 @@ RUN apt-get update && \
     tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz && \
     #wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip && \
     #unzip terraform_0.11.13_linux_amd64.zip -d /usr/local/bin/ && \
-    wget https://releases.hashicorp.com/terraform/0.12.16/terraform_0.12.16_linux_amd64.zip && \
-    unzip terraform_0.12.16_linux_amd64.zip -d /usr/local/bin/ && \
+    #wget https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip && \
+    #unzip terraform_${TF_VERSION}_linux_amd64.zip -d /usr/local/bin/ && \
     echo "smarman ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Install Docker
@@ -44,9 +48,16 @@ RUN apt-get update && \
 
 # Install devops stuff
 RUN pip3 install awscli && \
-    wget https://releases.hashicorp.com/terraform/0.11.13/ && \
     curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb" && \
-    sudo dpkg -i session-manager-plugin.deb
+    sudo dpkg -i session-manager-plugin.deb && \
+    wget https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip && \
+    unzip terraform_${TF_VERSION}_linux_amd64.zip -d /usr/local/bin/ && \
+    wget https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz && \
+    tar -zxvf helm-${HELM_VERSION}-linux-amd64.tar.gz && \
+    mv linux-amd64/helm /usr/local/bin/helm && \
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/${K8S_VERSION}/bin/linux/amd64/kubectl && \
+    chmod +x ./kubectl && \
+    mv ./kubectl /usr/local/bin/kubectl
     #sudo start amazon-ssm-agent
 
 
