@@ -18,8 +18,7 @@ RUN apt-get update && \
       groff \
       unzip \
       neofetch \
-      python3.5 \
-      #python3.6 \
+      python3.8 \
       python3-pip \
       python3-venv \
       ca-certificates \
@@ -32,10 +31,6 @@ RUN apt-get update && \
     adduser --quiet --disabled-password --shell /bin/zsh --home /home/${USERNAME} --gecos "User" ${USERNAME} && \
     wget https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz && \
-    #wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip && \
-    #unzip terraform_0.11.13_linux_amd64.zip -d /usr/local/bin/ && \
-    #wget https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip && \
-    #unzip terraform_${TF_VERSION}_linux_amd64.zip -d /usr/local/bin/ && \
     echo "smarman ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Install Docker
