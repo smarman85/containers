@@ -1,6 +1,6 @@
 FROM ubuntu:bionic
 
-ENV GO_VERSION 1.13.1
+ENV GO_VERSION 1.15.2
 #ENV TF_VERSION 0.12.16
 ENV TF_VERSION 0.11.14
 ENV HELM_VERSION v2.16.0-rc.2
@@ -31,7 +31,7 @@ RUN apt-get update && \
     adduser --quiet --disabled-password --shell /bin/zsh --home /home/${USERNAME} --gecos "User" ${USERNAME} && \
     wget https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz && \
-    echo "smarman ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+    echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Install Docker
 #RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && \
