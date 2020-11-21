@@ -1,0 +1,20 @@
+# https://github.com/GoogleContainerTools/container-structure-test
+# container-structure-test test --image smarman/ubuntudev:0.2.0 --config test.yaml
+schemaVersion: "2.0.0"
+
+commandTests:
+  - name: "python installation"
+    command: "which"
+    args: ["python3"]
+    expectedOutput: ["/usr/bin/python3\n"]
+
+  - name: "Go 15 installed"
+    command: "/usr/local/go/bin/go"
+    args: ["version"]
+    expectedOutput: ["go version go1.15.2 linux/amd64\n"]
+
+fileExistenceTests:
+  - name: "Aliases"
+    path: "/home/smarman/aliases.yml"
+    shouldExist: true
+    permissions: '-rw-r--r--'
