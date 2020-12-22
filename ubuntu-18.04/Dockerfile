@@ -1,13 +1,13 @@
 FROM ubuntu:bionic
 
-ENV GO_VERSION 1.15.2
-#ENV TF_VERSION 0.13.5
-ENV TF_VERSION 0.11.14
-ENV HELM_VERSION v2.16.0-rc.2
+ENV GO_VERSION 1.15.6
+ENV TF_VERSION 0.13.5
+#ENV TF_VERSION 0.11.14
+ENV HELM_VERSION v2.17.0
 ENV K8S_VERSION v1.17.0
 ENV USERNAME smarman
 
-https://releases.hashicorp.com/terraform/0.13.5/terraform_0.13.5_linux_amd64.zip
+#https://releases.hashicorp.com/terraform/0.13.5/terraform_0.13.5_linux_amd64.zip
 
 RUN apt-get update && \
     apt-get install -y git \
